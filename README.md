@@ -13,10 +13,11 @@ no manual `AddSingleton` calls, AOT/trim friendly.
 
 ```
 src/
-  MyApp/                        # the consumer library: interfaces + sample plugins
-  MyApp.SourceGeneration/       # the IIncrementalGenerator (netstandard2.0)
+  MyApp/                            # the consumer library: interfaces + sample plugins
+  MyApp.SourceGeneration/           # the IIncrementalGenerator (netstandard2.0)
 test/
-  MyApp.Tests/                  # unit tests for the generator + end-to-end DI tests
+  MyApp.SourceGeneration.Tests/     # unit tests that run the generator against in-memory source
+  MyApp.Tests/                      # end-to-end DI integration tests
 ```
 
 ## What's demonstrated
@@ -26,9 +27,12 @@ test/
   in by the generator.
 * A two-stage incremental pipeline (cheap syntactic filter → semantic check).
 * Deterministic, sorted output so generated files are diff-friendly.
-* Unit tests that run the generator against in-memory source and assert on the
-  emitted `.g.cs` files, plus an end-to-end test that resolves the plugins from
-  a real `ServiceCollection`.
+* Unit tests in `MyApp.SourceGeneration.Tests` run the generator against
+  in-memory Roslyn compilations and assert on the emitted `.g.cs` files
+  (registration output, ordering, abstract-class exclusion, etc.).
+* Integration tests in `MyApp.Tests` resolve the plugins from a real
+  `ServiceCollection` and verify singleton lifetime, plugin order, and
+  that `TimeProvider` is registered exactly once.
 
 ## Run
 

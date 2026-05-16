@@ -10,8 +10,8 @@ var services = new ServiceCollection()
 foreach (var startup in services.GetServices<IStartupPlugin>())
     startup.OnStartup();
 
-// Dispatch a command from args (defaults to "hello" if none given)
-var commandName = args.FirstOrDefault() ?? "hello";
+// Dispatch a command from args (defaults to "all" if none given)
+var commandName = args.FirstOrDefault() ?? "all";
 var commands = services.GetServices<ICommandPlugin>().ToList();
 var command = commands.FirstOrDefault(c => c.Name.Equals(commandName, StringComparison.OrdinalIgnoreCase));
 

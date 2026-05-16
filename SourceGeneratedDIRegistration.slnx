@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="src/MyApp.SourceGeneration/MyApp.SourceGeneration.csproj" />
   <Project Path="src/MyApp/MyApp.csproj" />
+  <Project Path="test/MyApp.SourceGeneration.Tests/MyApp.SourceGeneration.Tests.csproj" />
+  <Project Path="test/MyApp.Tests/MyApp.Tests.csproj" />
 </Solution>

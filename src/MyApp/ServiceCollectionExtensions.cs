@@ -1,5 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace MyApp;
 
@@ -7,8 +6,7 @@ public static partial class ServiceCollectionExtensions
 {
     public static IServiceCollection AddPlugins(this IServiceCollection services)
     {
-        services.TryAddSingleton(TimeProvider.System);
-
+        services.AddSingleton(TimeProvider.System);
         RegisterCommandPlugins(services);
         RegisterStartupPlugins(services);
 
