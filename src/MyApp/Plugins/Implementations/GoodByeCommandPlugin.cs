@@ -1,5 +1,6 @@
 namespace MyApp.Plugins.Implementations;
 
+[PluginOrder(1)]
 public sealed class GoodByeCommandPlugin : ICommandPlugin
 {
     public string Name => "goodbye";

@@ -1,5 +1,6 @@
 namespace MyApp.Plugins.Implementations;
 
+[PluginOrder(0)]
 public sealed class HelloCommandPlugin : ICommandPlugin
 {
     public string Name => "hello";
